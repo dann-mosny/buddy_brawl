@@ -1,0 +1,1 @@
+Small game developed from scratch in Godot in 48 hours during the Global Game Jam 2024. It is a 2D splitscreen platformer for two players. Each player is trying to reach the top of the level while they are sabotaged by their malicious opponent.
