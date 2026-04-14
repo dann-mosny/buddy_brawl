@@ -1,0 +1,188 @@
+[gd_scene load_steps=15 format=3 uid="uid://cssdwtncjmyg1"]
+
+[ext_resource type="Script" path="res://PlayerController.gd" id="1_f20g4"]
+[ext_resource type="Texture2D" uid="uid://cwcmso7266g0g" path="res://imgs/trump-assetsall.png" id="2_b0o3y"]
+[ext_resource type="Texture2D" uid="uid://dio0ftpbcnjvn" path="res://imgs/troll_face.png" id="3_ryggn"]
+[ext_resource type="Texture2D" uid="uid://3ktcsicu48nr" path="res://imgs/concussion-1.png" id="4_o1scm"]
+[ext_resource type="Texture2D" uid="uid://b1rxi2amu70j0" path="res://imgs/icon.svg" id="5_vktj5"]
+[ext_resource type="Texture2D" uid="uid://br1ldjpy4x1vq" path="res://imgs/concussion-assets.png" id="6_qaqry"]
+[ext_resource type="AudioStream" uid="uid://0nekjrv74iwy" path="res://sound_effects/land.mp3" id="7_2ujnq"]
+
+[sub_resource type="Animation" id="Animation_m7ocd"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Biden-final-12:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 3]
+}
+
+[sub_resource type="Animation" id="Animation_24oj3"]
+resource_name = "jump"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Biden-final-12:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_pwki3"]
+resource_name = "running"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Biden-final-12:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 4, 2, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jdro3"]
+_data = {
+"idle": SubResource("Animation_m7ocd"),
+"jump": SubResource("Animation_24oj3"),
+"running": SubResource("Animation_pwki3")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4xga"]
+size = Vector2(63, 92)
+
+[sub_resource type="Animation" id="Animation_k1uoc"]
+resource_name = "default"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stars:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_olcou"]
+_data = {
+"default": SubResource("Animation_k1uoc")
+}
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 14
+script = ExtResource("1_f20g4")
+
+[node name="Biden-final-12" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, -8)
+texture = ExtResource("2_b0o3y")
+hframes = 3
+vframes = 2
+
+[node name="TrollFace" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(8, 8)
+texture = ExtResource("3_ryggn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-2, 40, 15, 40, 30, 9, 30, -55, -32, -55, -32, 9, -17, 40, -2, 40)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Ability1Icon" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(128, 544)
+scale = Vector2(2, 2)
+texture = ExtResource("4_o1scm")
+
+[node name="Ability2Icon" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(256, 544)
+scale = Vector2(2, 2)
+texture = ExtResource("5_vktj5")
+
+[node name="Ability3Icon" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(384, 544)
+scale = Vector2(2, 2)
+texture = ExtResource("3_ryggn")
+
+[node name="CooldownLabel1" type="Label" parent="CanvasLayer"]
+offset_left = 103.0
+offset_top = 536.0
+offset_right = 151.0
+offset_bottom = 559.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "TIMER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CooldownLabel2" type="Label" parent="CanvasLayer"]
+offset_left = 232.0
+offset_top = 537.0
+offset_right = 280.0
+offset_bottom = 560.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "TIMER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CooldownLabel3" type="Label" parent="CanvasLayer"]
+offset_left = 360.0
+offset_top = 536.0
+offset_right = 408.0
+offset_bottom = 559.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "TIMER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jdro3")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -9)
+shape = SubResource("RectangleShape2D_t4xga")
+
+[node name="StarsAroundHead" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_olcou")
+}
+
+[node name="Stars" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-3, -58)
+texture = ExtResource("6_qaqry")
+vframes = 2
+
+[node name="SpeechPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="landingPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_2ujnq")
+volume_db = -20.503

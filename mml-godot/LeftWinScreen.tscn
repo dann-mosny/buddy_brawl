@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4dlk5ckj3mig"]
+
+[ext_resource type="Script" path="res://win_screen.gd" id="1_pi2rb"]
+[ext_resource type="Texture2D" uid="uid://c63urkk4angxo" path="res://imgs/oval_office.png" id="2_nokoc"]
+[ext_resource type="Texture2D" uid="uid://dl5u3idxvdeii" path="res://imgs/biden-assetsall.png" id="3_r8d81"]
+[ext_resource type="AudioStream" uid="uid://diqu6fishdpki" path="res://sound_effects/BidenQuotes/move_forward.mp3" id="4_c74jy"]
+
+[sub_resource type="SystemFont" id="SystemFont_y3cph"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="Animation" id="Animation_4w1qf"]
+resource_name = "win_idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Trump-assetsall:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b4lc5"]
+_data = {
+"win_idle": SubResource("Animation_4w1qf")
+}
+
+[node name="LeftWinScreen" type="Node2D"]
+script = ExtResource("1_pi2rb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="OvalOffice" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(510, 274)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_nokoc")
+
+[node name="Trump-assetsall" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(526, 313)
+scale = Vector2(3, 3)
+texture = ExtResource("3_r8d81")
+hframes = 3
+vframes = 2
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 130.0
+offset_top = -10.0
+offset_right = 993.0
+offset_bottom = 138.0
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_y3cph")
+theme_override_font_sizes/font_size = 120
+text = "Left Player Wins"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 358.0
+offset_top = 482.0
+offset_right = 699.0
+offset_bottom = 541.0
+theme_override_font_sizes/font_size = 30
+text = "Return to level select"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b4lc5")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_c74jy")
+volume_db = 6.451
+autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

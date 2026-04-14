@@ -1,0 +1,133 @@
+[gd_scene load_steps=8 format=3 uid="uid://cn3mb13e33rux"]
+
+[ext_resource type="Script" path="res://help.gd" id="1_vdg5v"]
+[ext_resource type="Texture2D" uid="uid://k6jtydxq0w71" path="res://imgs/crown.png" id="2_k755q"]
+[ext_resource type="Texture2D" uid="uid://3ktcsicu48nr" path="res://imgs/concussion-1.png" id="3_kf00r"]
+[ext_resource type="Texture2D" uid="uid://b10n3amv41sft" path="res://imgs/ghost.png" id="4_hq8yb"]
+[ext_resource type="Texture2D" uid="uid://c37rfhriesb5v" path="res://imgs/blind.png" id="5_4b1pa"]
+
+[sub_resource type="SystemFont" id="SystemFont_mthkh"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_6l0le"]
+font_names = PackedStringArray("Lucida Console")
+
+[node name="Help" type="Node2D"]
+script = ExtResource("1_vdg5v")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = -88.0
+offset_top = -56.0
+offset_right = 1083.0
+offset_bottom = 647.0
+color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 264.0
+offset_top = -19.0
+offset_right = 765.0
+offset_bottom = 95.0
+theme_override_fonts/font = SubResource("SystemFont_mthkh")
+theme_override_font_sizes/font_size = 60
+text = "How to Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Crown" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(171, 139)
+scale = Vector2(3, 3)
+texture = ExtResource("2_k755q")
+
+[node name="Concussion-1" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(170, 240)
+scale = Vector2(3, 3)
+texture = ExtResource("3_kf00r")
+
+[node name="Ghost" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(168, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("4_hq8yb")
+
+[node name="Blind" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(168, 482)
+scale = Vector2(3, 3)
+texture = ExtResource("5_4b1pa")
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 272.0
+offset_top = 88.0
+offset_right = 932.0
+offset_bottom = 178.0
+theme_override_font_sizes/font_size = 20
+text = "Win by getting to the crown at the top first.
+Left player moves with WAD, right player with Left/Right/Up arrows
+Slow down your opponent by using nasty powerups"
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 268.0
+offset_top = 196.0
+offset_right = 908.0
+offset_bottom = 286.0
+theme_override_font_sizes/font_size = 20
+text = "Confuse your opponent by switching his left and right buttons
+Left player activates with \"1\" key
+Right player activates with \",\" key "
+
+[node name="Label4" type="Label" parent="CanvasLayer"]
+offset_left = 265.0
+offset_top = 312.0
+offset_right = 956.0
+offset_bottom = 402.0
+theme_override_font_sizes/font_size = 20
+text = "Turn your opponent into a ghost and make him drop through platforms
+Left player activates with \"2\" key
+Right player activates with \".\" key"
+
+[node name="Label5" type="Label" parent="CanvasLayer"]
+offset_left = 265.0
+offset_top = 433.0
+offset_right = 929.0
+offset_bottom = 523.0
+theme_override_font_sizes/font_size = 20
+text = "Blind your opponent by obstructing his view with a big troll face
+Left player activates with \"3\" key
+Right player activates with \"/\" key"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 70.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 40
+text = "<"
+
+[node name="Label6" type="Label" parent="CanvasLayer"]
+offset_left = 263.0
+offset_top = 558.0
+offset_right = 699.0
+offset_bottom = 586.0
+theme_override_font_sizes/font_size = 20
+text = "Press Esc at any time to return to main menu"
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+offset_left = 120.0
+offset_top = 552.0
+offset_right = 216.0
+offset_bottom = 592.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label7" type="Label" parent="CanvasLayer"]
+offset_left = 120.0
+offset_top = 552.0
+offset_right = 216.0
+offset_bottom = 592.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("SystemFont_6l0le")
+theme_override_font_sizes/font_size = 35
+text = "ESC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

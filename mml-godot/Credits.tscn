@@ -1,0 +1,108 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6v8n348abvwo"]
+
+[ext_resource type="Script" path="res://credits.gd" id="1_gwj7o"]
+
+[sub_resource type="SystemFont" id="SystemFont_jffsr"]
+font_names = PackedStringArray("Impact")
+
+[node name="Credits" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = -31.0
+offset_top = -19.0
+offset_right = 1055.0
+offset_bottom = 629.0
+color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 70.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 40
+text = "<"
+script = ExtResource("1_gwj7o")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 328.0
+offset_top = 8.0
+offset_right = 686.0
+offset_bottom = 72.0
+theme_override_fonts/font = SubResource("SystemFont_jffsr")
+theme_override_font_sizes/font_size = 45
+text = "Made by:"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="CanvasLayer"]
+offset_left = 328.0
+offset_top = 232.0
+offset_right = 686.0
+offset_bottom = 306.0
+theme_override_fonts/font = SubResource("SystemFont_jffsr")
+theme_override_font_sizes/font_size = 45
+text = "Made for:"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="CanvasLayer"]
+offset_left = 320.0
+offset_top = 488.0
+offset_right = 685.0
+offset_bottom = 552.0
+theme_override_fonts/font = SubResource("SystemFont_jffsr")
+theme_override_font_sizes/font_size = 45
+text = "Special thanks to:"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 280.0
+offset_top = 344.0
+offset_right = 741.0
+offset_bottom = 416.0
+theme_override_fonts/font = SubResource("SystemFont_jffsr")
+theme_override_font_sizes/font_size = 45
+text = "Pictures from:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 240.0
+offset_top = 56.0
+offset_right = 784.0
+offset_bottom = 208.0
+theme_override_font_sizes/font_size = 25
+text = "Dann Mosný
+Jakub Kučera
+Bruno Čičmanec
+Lukáš Mlkvik"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer"]
+offset_left = 232.0
+offset_top = 400.0
+offset_right = 776.0
+offset_bottom = 480.0
+theme_override_font_sizes/font_size = 25
+text = "National public radio, USA
+Dale Blanshan"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="CanvasLayer"]
+offset_left = 224.0
+offset_top = 544.0
+offset_right = 808.0
+offset_bottom = 592.0
+theme_override_font_sizes/font_size = 25
+text = "Organizers of Global Game Jam Slovakia, Trnava"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="CanvasLayer"]
+offset_left = 232.0
+offset_top = 280.0
+offset_right = 776.0
+offset_bottom = 336.0
+theme_override_font_sizes/font_size = 25
+text = "Global Game Jam 2024"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]

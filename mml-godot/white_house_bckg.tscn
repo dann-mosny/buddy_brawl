@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b341ud4pjpk54"]
+
+[ext_resource type="Texture2D" uid="uid://dx3yeuxyc1jdu" path="res://imgs/bckg-img.png" id="1_nw2r2"]
+
+[node name="WhiteHouseBckg" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_scale = Vector2(0.1, 0.1)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.498039, 0.498039, 0.498039, 1)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_nw2r2")
+offset = Vector2(500, 500)
